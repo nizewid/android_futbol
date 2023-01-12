@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Futbol mundial</string>
+    <string name="mensaje_principal">Seleccione su opcion:</string>
+    <string name="gestion_de_jugador">Gestión de jugador</string>
+    <string name="gestionar_jugador">Jugadores</string>
+    <string name="gestion_de_equipo">Gestión de equipos</string>
+    <string name="gestionar_equipo">Equipos</string>
+    <string name="agregar_equipo">Agregar equipo</string>
+    <string name="listar_equipos">Lista de Equipos</string>
+    <string name="editar_equipo">Editar equipo</string>
+    <string name="eliminar_equipo">Eliminar equipo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nombre_equipo">Nombre del equipo</string>
+    <string name="activo">ACTIVO</string>
+    <string name="presidente_equipo">Presidente</string>
+    <string name="localidad">Localidad</string>
+    <string name="patrocinador">Patrocinador</string>
+    <string name="ver_equipos">Listar equipos</string>
+    <string name="buscarEquipo">Buscar equipo:</string>
+    <string name="buscar_equipo">Buscar Equipo</string>
+</resources>
