@@ -33,6 +33,7 @@ public class DAOEquipoImpl extends DatabaseOpenHelper implements EquiposDAO {
         cv.put(DbConstants.COLUMN_EQUIPO_ACTIVO,equipo.isActivo());
 
         long insert = db.insert(DbConstants.TABLA_EQUIPOS, "", cv);
+        db.close();
         if (insert==-1){
             return false;
         }else{
@@ -45,6 +46,7 @@ public class DAOEquipoImpl extends DatabaseOpenHelper implements EquiposDAO {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM "+DbConstants.TABLA_EQUIPOS+" where "+ DbConstants.COLUMN_ID_EQUIPO+" ="+ equipo.getId_equipo();
         Cursor cursor= db.rawQuery(query,null);
+        db.close();
         if(cursor.moveToFirst()){
             return false;
         }else{
@@ -53,20 +55,21 @@ public class DAOEquipoImpl extends DatabaseOpenHelper implements EquiposDAO {
     }
 
     @Override
-    public void actualizarEquipo(EquipoModel equipo){
+    public int actualizarEquipo(EquipoModel equipo){
+        int actualizado;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valoresNuevos = new ContentValues();
-        valoresNuevos.put("nombre",equipo.getNombre());
-        valoresNuevos.put("patrocinador",equipo.getPatrocinador());
-        valoresNuevos.put("presidente",equipo.getPresidente());
-        valoresNuevos.put("localidad",equipo.getLocalidad());
-        valoresNuevos.put("activo",equipo.isActivo());
+        valoresNuevos.put(DbConstants.COLUMN_NOMBRE_EQUIPO,equipo.getNombre());
+        valoresNuevos.put(DbConstants.COLUMN_PATROCINADOR,equipo.getPatrocinador());
+        valoresNuevos.put(DbConstants.COLUMN_PRESIDENTE,equipo.getPresidente());
+        valoresNuevos.put(DbConstants.COLUMN_LOCALIDAD,equipo.getLocalidad());
+        valoresNuevos.put(DbConstants.COLUMN_EQUIPO_ACTIVO,equipo.isActivo());
 
         String[] argumentosParaActualizar = {String.valueOf(equipo.getId_equipo())};
 
-        db.update(DbConstants.TABLA_EQUIPOS, valoresNuevos, DbConstants.COLUMN_ID_EQUIPO+" = ?",argumentosParaActualizar);
-
-
+        actualizado = db.update(DbConstants.TABLA_EQUIPOS, valoresNuevos, DbConstants.COLUMN_ID_EQUIPO+" = ?",argumentosParaActualizar);
+        db.close();
+        return actualizado;
     }
 
     @Override

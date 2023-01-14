@@ -17,6 +17,14 @@ public class EquipoModel {
         this.activo = activo;
     }
 
+    public EquipoModel(String nombre, String patrocinador, String presidente, String localidad, boolean activo) {
+        this.nombre = nombre;
+        this.patrocinador = patrocinador;
+        this.presidente = presidente;
+        this.localidad = localidad;
+        this.activo = activo;
+    }
+
     @Override
     public String toString() {
         String equipo = "";

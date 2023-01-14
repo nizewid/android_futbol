@@ -5,7 +5,8 @@
     <string name="gestionar_jugador">Jugadores</string>
     <string name="gestion_de_equipo">Gestión de equipos</string>
     <string name="gestionar_equipo">Equipos</string>
-    <string name="agregar_equipo">Agregar equipo</string>
+    <string name="agregar_equipo">Agregar</string>
+    <string name="modificar_equipo">Modificar</string>
     <string name="listar_equipos">Lista de Equipos</string>
     <string name="editar_equipo">Editar equipo</string>
     <string name="eliminar_equipo">Eliminar equipo</string>
@@ -19,4 +20,12 @@
     <string name="ver_equipos">Listar equipos</string>
     <string name="buscarEquipo">Buscar equipo:</string>
     <string name="buscar_equipo">Buscar Equipo</string>
+    <string name="txt_idJugador">Id_</string>
+    <string name="txt_nombre">NombreJugador</string>
+    <string name="txt_edad">Edad</string>
+    <string name="lesion">Lesionado</string>
+    <string name="buscar_jugador">Buscar jugador</string>
+    <string name="listar_jugador">Listar jugadores</string>
+    <string name="agregar_jugador">Agregar</string>
+    <string name="txt_avatar">Avatar:</string>
 </resources>

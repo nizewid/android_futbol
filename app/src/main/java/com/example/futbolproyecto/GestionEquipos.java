@@ -1,7 +1,6 @@
 package com.example.futbolproyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -10,11 +9,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.futbolproyecto.fragment.EquiposListFragment;
-import com.example.futbolproyecto.fragment.FragmentNuevo;
+import com.example.futbolproyecto.fragment.FragmentListEquipos;
+import com.example.futbolproyecto.fragment.FragmentNuevoEquipo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class GestionEquipos extends AppCompatActivity implements View.OnClickListener {
+public class GestionEquipos extends AppCompatActivity {
     //elementos de la vista
     private ListView lv_Equipos;
     private Button btn_verEquipos;
@@ -27,10 +26,10 @@ public class GestionEquipos extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_gestion_equipos);
         //Referenciar botones a la vista
 
-        btn_agregarEquipo=findViewById(R.id.btn_agregarEquipo);
-        btn_verEquipos=findViewById(R.id.btn_verEquipos);
+        btn_agregarEquipo=findViewById(R.id.btn_agregarJugador);
+        btn_verEquipos=findViewById(R.id.btn_verJugadores);
 
-        EquiposListFragment equiposFragment = new EquiposListFragment();
+        FragmentListEquipos equiposFragment = new FragmentListEquipos();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_view,equiposFragment);
         fragmentTransaction.commit();
@@ -38,7 +37,7 @@ public class GestionEquipos extends AppCompatActivity implements View.OnClickLis
         btn_agregarEquipo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentNuevo fragment = new FragmentNuevo();
+                FragmentNuevoEquipo fragment = new FragmentNuevoEquipo();
                //Obtenemos la transaccion
                 FragmentTransaction  fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container_view,fragment);
@@ -49,7 +48,7 @@ public class GestionEquipos extends AppCompatActivity implements View.OnClickLis
         btn_verEquipos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EquiposListFragment equiposFragment = new EquiposListFragment();
+                FragmentListEquipos equiposFragment = new FragmentListEquipos();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container_view,equiposFragment);
                 fragmentTransaction.commit();
@@ -58,9 +57,5 @@ public class GestionEquipos extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 
 }

@@ -25,14 +25,14 @@ import com.example.futbolproyecto.model.EquipoModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EquiposListFragment extends Fragment {
+public class FragmentListEquipos extends Fragment {
     SearchView searchView;
     ListView lv_listaEquipos;
     List<EquipoModel> listadoEquipos;
     List<EquipoModel> listaFiltrada;
     ListAdapter adaptadorLista;
 
-    public EquiposListFragment() {
+    public FragmentListEquipos() {
         // Required empty public constructor
     }
 
@@ -78,9 +78,10 @@ public class EquiposListFragment extends Fragment {
                 bundle.putBoolean("activo",listadoEquipos.get(position).isActivo());
 
                 FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentNuevo fn = new FragmentNuevo();
+                FragmentNuevoEquipo fn = new FragmentNuevoEquipo();
                 fn.setArguments(bundle);
                 manager.beginTransaction()
+                        .remove(fn)
                         .replace(R.id.fragment_container_view,fn)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();

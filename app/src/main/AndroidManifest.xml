@@ -13,6 +13,9 @@
         <activity android:name=".GestionEquipos"
             android:windowSoftInputMode="adjustPan">
         </activity>
+        <activity android:name=".GestionJugador"
+            >
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

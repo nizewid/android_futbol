@@ -38,14 +38,14 @@
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:layout_weight="1"
-        android:text="@string/ver_equipos"
+        android:text="@string/listar_jugador"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_agregarJugador"
         app:layout_constraintTop_toBottomOf="@+id/fragment_container_view"
         app:layout_constraintVertical_bias="0.017" />
 
     <Button
-
+        android:id="@+id/btn_buscarJugador"
         android:layout_width="122dp"
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
         android:layout_marginEnd="13dp"
         android:layout_marginRight="13dp"
         android:layout_weight="1"
-        android:text="@string/buscar_equipo"
+        android:text="@string/buscar_jugador"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_verJugadores"
         app:layout_constraintStart_toStartOf="parent"

@@ -31,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_jugador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,GestionJugador.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

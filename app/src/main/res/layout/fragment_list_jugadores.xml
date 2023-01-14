@@ -3,15 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.FragmentListEquipos"
-    >
+    tools:context=".fragment.FragmentListJugadores">
 
-    <!-- TODO: Update blank fragment layout -->
     <ListView
-        android:id="@+id/lv_equiposList"
-        android:divider="@null"
+        android:id="@+id/lv_listaJugadores"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

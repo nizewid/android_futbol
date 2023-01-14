@@ -10,7 +10,7 @@ public interface EquiposDAO {
 
     public boolean eliminarEquipo(EquipoModel equipo);
 
-    public void actualizarEquipo(EquipoModel equipo);
+    public int actualizarEquipo(EquipoModel equipo);
 
     public ArrayList<EquipoModel> listarEquipos();
 }

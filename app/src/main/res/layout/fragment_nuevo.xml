@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragment.FragmentNuevo">
+    tools:context=".fragment.FragmentNuevoEquipo">
 
 
     <EditText
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_presidente" />
 
     <Button
-        android:id="@+id/btn_altaEquipo"
+        android:id="@+id/btn_accionEquipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

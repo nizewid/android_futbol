@@ -6,17 +6,38 @@ public class JugadorModel {
     private int edad;
     private String picture;
     private boolean lesionado;
+    private int id_equipo;
 
-    public JugadorModel(int id, String nombre, int edad, String picture, boolean lesionado) {
+
+
+    public JugadorModel(int id, String nombre, int edad, String picture, boolean lesionado,int id_equipo) {
         this.id = id;
         this.nombre = nombre;
         this.edad = edad;
         this.picture = picture;
         this.lesionado = lesionado;
-    }
+        this.id_equipo = id_equipo;
 
+    }
     public JugadorModel() {
     }
+
+    public JugadorModel(String nombre, int edad, String picture, boolean lesionado,int id_equipo) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.picture = picture;
+        this.lesionado = lesionado;
+        this.id_equipo=id_equipo;
+    }
+
+    public int getId_equipo() {
+        return id_equipo;
+    }
+
+    public void setId_equipo(int id_equipo) {
+        this.id_equipo = id_equipo;
+    }
+
 
     @Override
     public String toString() {
