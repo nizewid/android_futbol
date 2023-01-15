@@ -3,20 +3,18 @@ package com.example.futbolproyecto.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.futbolproyecto.R;
 import com.example.futbolproyecto.dao.DAOEquipoImpl;
@@ -30,7 +28,7 @@ public class FragmentListEquipos extends Fragment {
     ListView lv_listaEquipos;
     List<EquipoModel> listadoEquipos;
     List<EquipoModel> listaFiltrada;
-    ListAdapter adaptadorLista;
+
 
     public FragmentListEquipos() {
         // Required empty public constructor
@@ -45,6 +43,7 @@ public class FragmentListEquipos extends Fragment {
 
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,20 +68,21 @@ public class FragmentListEquipos extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //para pasar los parametros utilizamos el objeto Bundle;
                 Bundle bundle = new Bundle();
-                bundle.putInt("id",listadoEquipos.get(position).getId_equipo());
-                bundle.putString("nombre",listadoEquipos.get(position).getNombre());
-                bundle.putString("patrocinador",listadoEquipos.get(position).getPatrocinador());
-                bundle.putString("presidente",listadoEquipos.get(position).getPresidente());
-                bundle.putString("localidad",listadoEquipos.get(position).getLocalidad());
-                bundle.putBoolean("activo",listadoEquipos.get(position).isActivo());
+                bundle.putInt("id", listadoEquipos.get(position).getId_equipo());
+                bundle.putString("nombre", listadoEquipos.get(position).getNombre());
+                bundle.putString("patrocinador", listadoEquipos.get(position).getPatrocinador());
+                bundle.putString("presidente", listadoEquipos.get(position).getPresidente());
+                bundle.putString("localidad", listadoEquipos.get(position).getLocalidad());
+                bundle.putBoolean("activo", listadoEquipos.get(position).isActivo());
 
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 FragmentNuevoEquipo fn = new FragmentNuevoEquipo();
+                //Al crear el nuevo fragment necesitamos pasarle los parametros con SetArguments
                 fn.setArguments(bundle);
                 manager.beginTransaction()
-                        .remove(fn)
-                        .replace(R.id.fragment_container_view,fn)
+                        .replace(R.id.fragment_container_view, fn)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();
 
@@ -94,19 +94,19 @@ public class FragmentListEquipos extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 EquipoModel equipoAeLiminar = listadoEquipos.get(position);
                 AlertDialog.Builder dialog = new AlertDialog.Builder(view.getContext());
-                dialog.setMessage("Estas seguro de eliminar el equipo" + equipoAeLiminar.getNombre()+"con ID "+equipoAeLiminar.getId_equipo()).setCancelable(false)
+                dialog.setMessage("Estas seguro de eliminar el equipo" + equipoAeLiminar.getNombre() + "con ID " + equipoAeLiminar.getId_equipo()).setCancelable(false)
                         .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                             //EN CASO DE QUE SEA POSITIVO
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                        DAOEquipoImpl daoEquipo = new DAOEquipoImpl(view.getContext());
-                        daoEquipo.eliminarEquipo(listadoEquipos.get(position));
+                                DAOEquipoImpl daoEquipo = new DAOEquipoImpl(view.getContext());
+                                daoEquipo.eliminarEquipo(listadoEquipos.get(position));
 
-                        Toast.makeText(view.getContext(), " Se elimino correctamente ".concat(equipoAeLiminar.getNombre()), Toast.LENGTH_SHORT).show();
-                    }
+                                Toast.makeText(view.getContext(), " Se elimino correctamente ".concat(equipoAeLiminar.getNombre()), Toast.LENGTH_SHORT).show();
+                            }
 
-                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();

@@ -43,15 +43,18 @@ public class DAOEquipoImpl extends DatabaseOpenHelper implements EquiposDAO {
 
     @Override
     public boolean eliminarEquipo(EquipoModel equipo){
+        boolean exito;
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM "+DbConstants.TABLA_EQUIPOS+" where "+ DbConstants.COLUMN_ID_EQUIPO+" ="+ equipo.getId_equipo();
         Cursor cursor= db.rawQuery(query,null);
-        db.close();
-        if(cursor.moveToFirst()){
-            return false;
+
+        if(cursor.moveToFirst()==false){
+            exito = false;
         }else{
-            return true;
+            exito = true;
         }
+        db.close();
+        return exito;
     }
 
     @Override
@@ -98,4 +101,5 @@ public class DAOEquipoImpl extends DatabaseOpenHelper implements EquiposDAO {
         db.close();
         return list;
     }
+
 }

@@ -14,45 +14,40 @@ import com.example.futbolproyecto.fragment.FragmentListJugadores;
 import com.example.futbolproyecto.fragment.FragmentNuevoJugador;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class GestionJugador extends AppCompatActivity{
-    private ListView lv_Jugadores;
+public class GestionJugador extends AppCompatActivity {
+
     private Button btn_verJugadores;
     FloatingActionButton btn_agregarJugador;
-    
-@Override
-protected void onCreate(Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_gestion_jugador);
-    
-    btn_agregarJugador = findViewById(R.id.btn_agregarJugador);
-    btn_verJugadores = findViewById(R.id.btn_verJugadores);
-    
-    btn_verJugadores.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(GestionJugador.this, "Has pulsado ver", Toast.LENGTH_SHORT).show();
-        }
-    });
-    btn_agregarJugador.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gestion_jugador);
+        //Referenciar
+        btn_agregarJugador = findViewById(R.id.btn_agregarJugador);
+        btn_verJugadores = findViewById(R.id.btn_verJugadores);
+
+        mostrarListadoJugadores();
+
+
+        btn_agregarJugador.setOnClickListener(v -> {
             FragmentNuevoJugador jugadorFragment = new FragmentNuevoJugador();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container_view,jugadorFragment);
-            fragmentTransaction.commit();
-            Toast.makeText(GestionJugador.this, "presionaste agregar", Toast.LENGTH_SHORT).show();
-        }
-    });
-    btn_verJugadores.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            FragmentListJugadores jugadoresFragment = new FragmentListJugadores();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container_view,jugadoresFragment);
-            fragmentTransaction.commit();
-            Toast.makeText(GestionJugador.this, "presionaste listar", Toast.LENGTH_SHORT).show();
-        }
-    });
-}
+            fragmentTransaction
+                    .replace(R.id.fragment_container_view, jugadorFragment)
+                    .commit();
+            //Toast.makeText(GestionJugador.this, "presionaste agregar", Toast.LENGTH_SHORT).show();
+        });
+        btn_verJugadores.setOnClickListener(v -> mostrarListadoJugadores());
+    }
+
+    private void mostrarListadoJugadores() {
+        FragmentListJugadores jugadoresFragment = new FragmentListJugadores();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction
+                .replace(R.id.fragment_container_view, jugadoresFragment)
+                .commit();
+        //Toast.makeText(GestionJugador.this, "presionaste listar", Toast.LENGTH_SHORT).show();
+    }
 
 }

@@ -2,10 +2,6 @@ package com.example.futbolproyecto.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.futbolproyecto.R;
 import com.example.futbolproyecto.dao.DAOEquipoImpl;
@@ -89,12 +88,12 @@ public class FragmentNuevoEquipo extends Fragment {
             btn_accionEquipo.setText("Actualizar");
         }
 
-
         btn_accionEquipo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 equipo = null;
                 String mensaje = comprobarCampos();
+
                 if (btn_accionEquipo.getText().toString().equalsIgnoreCase("Agregar") && mensaje.equals("OK")) {
 
                     try {
@@ -121,7 +120,7 @@ public class FragmentNuevoEquipo extends Fragment {
                     actualizados = daoEquipo.actualizarEquipo(equipo);
 
                     mostrarFragmentLista();
-                    Toast.makeText(view.getContext(), "Filas afectadas: " + String.valueOf(actualizados), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Filas afectadas: " + actualizados, Toast.LENGTH_SHORT).show();
                 }
                 cerrarTeclado();
                 Toast.makeText(view.getContext(), mensaje, Toast.LENGTH_SHORT).show();

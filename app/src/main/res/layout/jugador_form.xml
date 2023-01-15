@@ -1,74 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="top"
     android:orientation="vertical"
-    android:gravity="top">
+    android:paddingLeft="10dp"
+    android:paddingTop="2dp"
+    android:paddingRight="10dp">
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/img_avatar"
             android:layout_width="75dp"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
+            android:contentDescription="@string/avatar"
             app:srcCompat="@drawable/jugador3" />
 
         <EditText
             android:id="@+id/et_nombreJugador"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/txt_nombre"
+            android:importantForAutofill="no"
             android:inputType="textPersonName" />
+
         <EditText
             android:id="@+id/et_edadJugador"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/txt_edad"
+            android:importantForAutofill="no"
             android:inputType="numberSigned" />
+
     </LinearLayout>
 
-
-
-
-    <TextView
-        android:id="@+id/txt_avatar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_avatar" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/sp_avatar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txt_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_avatar" />
 
-    <TextView
-        android:id="@+id/txt_equipos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/gestionar_equipo" />
+        <Spinner
+            android:id="@+id/sp_avatar"
+            style="@style/spinnerItemStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Spinner
-        android:id="@+id/sp_equipo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txt_equipos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gestionar_equipo" />
 
-    <Switch
-        android:id="@+id/sw_lesionado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/lesion" />
+        <Spinner
+            android:id="@+id/sp_equipo"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_accionJugador"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/agregar_jugador" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <Switch
+            android:id="@+id/sw_lesionado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/lesion" />
+
+        <Button
+            android:id="@+id/btn_accionJugador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agregar_jugador" />
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -23,9 +23,11 @@
     <string name="txt_idJugador">Id_</string>
     <string name="txt_nombre">NombreJugador</string>
     <string name="txt_edad">Edad</string>
-    <string name="lesion">Lesionado</string>
+    <string name="lesion">Lesion</string>
     <string name="buscar_jugador">Buscar jugador</string>
     <string name="listar_jugador">Listar jugadores</string>
     <string name="agregar_jugador">Agregar</string>
     <string name="txt_avatar">Avatar:</string>
+    <string name="jugador_edad">Edad</string>
+    <string name="avatar">avatar</string>
 </resources>

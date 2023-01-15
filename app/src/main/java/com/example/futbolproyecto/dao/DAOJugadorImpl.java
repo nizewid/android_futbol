@@ -21,53 +21,78 @@ public class DAOJugadorImpl extends DatabaseOpenHelper implements JugadorDAO {
     }
 
     @Override
-    public boolean registrarJugador(JugadorModel jugador){
+    public boolean registrarJugador(JugadorModel jugador) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(DbConstants.COLUMN_NOMBRE_JUGADOR,jugador.getNombre());
-        cv.put(DbConstants.COLUMN_EDAD,jugador.getEdad());
-        cv.put(DbConstants.COLUMN_PICTURE,jugador.getPicture());
-        cv.put(DbConstants.COLUMN_ID_EQUIPO,jugador.getId_equipo());
-        cv.put(DbConstants.COLUMN_LESIONADO,jugador.isLesionado());
+        cv.put(DbConstants.COLUMN_NOMBRE_JUGADOR, jugador.getNombre());
+        cv.put(DbConstants.COLUMN_EDAD, jugador.getEdad());
+        cv.put(DbConstants.COLUMN_PICTURE, jugador.getPicture());
+        cv.put(DbConstants.COLUMN_ID_EQUIPO, jugador.getId_equipo());
+        cv.put(DbConstants.COLUMN_LESIONADO, jugador.isLesionado());
 
         long insert = db.insert(DbConstants.TABLA_JUGADORES, "", cv);
         db.close();
-        if (insert==-1){
+        if (insert == -1) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
     @Override
-    public void eliminarJugador(JugadorModel jugador)  {
+    public boolean eliminarJugador(JugadorModel jugador) {
+        boolean accion;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + DbConstants.TABLA_JUGADORES + " where " + DbConstants.COLUMN_ID_JUGADOR + " =" + jugador.getId();
+        Cursor cursor = db.rawQuery(query, null);
 
+        if (cursor.moveToFirst()==false) {
+            accion = false;
+        } else {
+            accion = true;
+        }
+        cursor.close();
+        db.close();
+        return accion;
     }
 
     @Override
-    public void actualizarJugador(JugadorModel jugador)  {
+    public int actualizarJugador(JugadorModel jugador) {
+        int actualizado;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues valoresNuevos = new ContentValues();
+        valoresNuevos.put(DbConstants.COLUMN_NOMBRE_JUGADOR, jugador.getNombre());
+        valoresNuevos.put(DbConstants.COLUMN_EDAD, jugador.getEdad());
+        valoresNuevos.put(DbConstants.COLUMN_PICTURE, jugador.getPicture());
+        valoresNuevos.put(DbConstants.COLUMN_LESIONADO, jugador.isLesionado());
+        valoresNuevos.put(DbConstants.COLUMN_ID_EQUIPO, jugador.getId_equipo());
 
+        String[] argumentosParaActualizar = {String.valueOf(jugador.getId())};
+
+        actualizado = db.update(DbConstants.TABLA_JUGADORES, valoresNuevos, DbConstants.COLUMN_ID_EQUIPO + " = ?", argumentosParaActualizar);
+        db.close();
+        return actualizado;
     }
 
     @Override
-    public ArrayList<JugadorModel> listarEquipos()  {
+    public ArrayList<JugadorModel> listarJugadores() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<JugadorModel> arrayJugadores = new ArrayList<>();
-        String query = "SELECT * FROM "+DbConstants.TABLA_JUGADORES;
-        Cursor cursor = db.rawQuery(query,null);
+        String query = "SELECT * FROM " + DbConstants.TABLA_JUGADORES;
+        Cursor cursor = db.rawQuery(query, null);
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 int idJugador = cursor.getInt(0);
                 String nombre = cursor.getString(1);
                 int edadJugador = cursor.getInt(2);
                 String avatar = cursor.getString(3);
-                boolean lesinado = cursor.getInt(4) ==1? true:false;
+                boolean lesinado = cursor.getInt(4) == 1 ? true : false;
                 int idEquipo = cursor.getInt(5);
-                arrayJugadores.add(new JugadorModel(idJugador,nombre,edadJugador,avatar,lesinado,idEquipo));
-            }while(cursor.moveToNext());
-        }else{
+                arrayJugadores.add(new JugadorModel(idJugador, nombre, edadJugador, avatar, lesinado, idEquipo));
+            } while (cursor.moveToNext());
+        } else {
         }
         cursor.close();
         db.close();

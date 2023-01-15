@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public interface JugadorDAO {
 
-    public boolean registrarJugador(JugadorModel jugador);
+    boolean registrarJugador(JugadorModel jugador);
 
-    public void eliminarJugador(JugadorModel jugador);
+    boolean eliminarJugador(JugadorModel jugador);
 
-    public void actualizarJugador(JugadorModel jugador);
+    int actualizarJugador(JugadorModel jugador);
 
-    public ArrayList<JugadorModel> listarEquipos();
+    ArrayList<JugadorModel> listarJugadores();
 }
